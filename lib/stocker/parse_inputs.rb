@@ -22,7 +22,6 @@ class ParseInputs
       to_date = Date.parse(@args[2])
       [@api_key, ticker, from_date, to_date]
     else
-
       [@api_key, ticker, from_date]
     end
   rescue ArgumentError

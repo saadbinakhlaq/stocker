@@ -1,5 +1,6 @@
 require 'stocker/version'
 require 'stocker/parse_inputs'
+require 'stocker/api/quandl'
 
 module Stocker
   class Error < StandardError; end
