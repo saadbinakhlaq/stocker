@@ -26,11 +26,29 @@ RSpec.describe API::Quandl do
     end
 
     context 'when invalid api key is given' do
+      let(:api_key)   { '1' }
+      let(:ticker)    { 'ticker' }
+      let(:from_date) { '01-02-2018' }
       subject do
-        API::Quandl.fetch('1', ticker: 'ticker', from_date: '01-02-2018')
+        API::Quandl.fetch(api_key, ticker: ticker, from_date: Date.parse(from_date))
       end
 
       it 'raises invalid api key error' do
+        expect(described_class).to receive(:get).with(
+          API::Quandl::PATH,
+          query: {
+            api_key: api_key,
+            ticker: ticker,
+            'date.gte' => Date.parse(from_date),
+            'date.lte' => Date.today
+          }
+        ).and_return(
+          'quandl_error' => {
+            'code' => 'QELx01',
+            'message' => 'Error'
+          }
+        )
+
         expect do
           subject
         end.to raise_error(API::Quandl::Error)
