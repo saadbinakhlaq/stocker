@@ -45,7 +45,7 @@ class ResponseBuilder
           each_data[12],
           each_data[13]
         )
-      end
+      end.reverse
     else
       []
     end

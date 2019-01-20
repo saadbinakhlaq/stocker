@@ -5,6 +5,9 @@ require 'stocker/version'
 require 'stocker/parse_inputs'
 require 'stocker/api/quandl'
 require 'stocker/response_builder'
+require 'stocker/operations/rate_of_return'
+require 'stocker/operations/max_drawdown'
+require 'stocker/output_formatter'
 
 Gem::Specification.new do |spec|
   spec.name          = 'stocker'
