@@ -55,16 +55,16 @@ module Stocker
     rescue ParseInputs::WrongNumOfArgument
       puts <<~ARGS
       Wrong number of arguments given
-      Usage: API_KEY=x9yVUimmcRme stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
+      Usage: API_KEY=api_key stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
              OR
-             API_KEY=x9yVUimmcRme stocker ASDAPL '2 Jan 2018'
+             API_KEY=api_key stocker ASDAPL '2 Jan 2018'
       ARGS
     rescue ParseInputs::ApiKeyInvalid
       puts <<~API
       Api key not given
-      Usage: API_KEY=x9yVUimmcRme stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
+      Usage: API_KEY=api_key stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
              OR
-             API_KEY=x9yVUimmcRme stocker ASDAPL '2 Jan 2018'
+             API_KEY=api_key stocker ASDAPL '2 Jan 2018'
       API
     rescue ParseInputs::InvalidDate
       puts <<~DATE
