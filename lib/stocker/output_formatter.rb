@@ -20,6 +20,6 @@ class OutputFormatter
   private
 
   def self.display_percent(percent)
-    percent > 0 ? "+ #{percent}" : "#{percent}"
+    percent > 0 ? "+#{percent}" : "#{percent}"
   end
 end

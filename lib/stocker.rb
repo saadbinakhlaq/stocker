@@ -48,7 +48,29 @@ module Stocker
         OutputFormatter.display_stock_prices(response.collection)
         OutputFormatter.display_max_drawdown(max_drawdown)
         OutputFormatter.display_rate_of_return(difference, percent)
+      else
+        puts "No record found for #{ticker}"
       end
+
+    rescue ParseInputs::WrongNumOfArgument
+      puts <<~ARGS
+      Wrong number of arguments given
+      Usage: API_KEY=x9yVUimmcRme stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
+             OR
+             API_KEY=x9yVUimmcRme stocker ASDAPL '2 Jan 2018'
+      ARGS
+    rescue ParseInputs::ApiKeyInvalid
+      puts <<~API
+      Api key not given
+      Usage: API_KEY=x9yVUimmcRme stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
+             OR
+             API_KEY=x9yVUimmcRme stocker ASDAPL '2 Jan 2018'
+      API
+    rescue ParseInputs::InvalidDate
+      puts <<~DATE
+      Date is invalid format
+      Add date in "1 Jan 2018" format
+      DATE
     end
   end
 end
