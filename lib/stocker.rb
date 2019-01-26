@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'stocker/version'
 require 'stocker/parse_inputs'
 require 'stocker/api/quandl'
@@ -24,7 +26,7 @@ module Stocker
 
       response = ResponseBuilder.new(api_response)
 
-      if response.has_records?
+      if response.records?
         first_open_value     = response.collection.first.open
         last_adj_close_value = response.collection.last.adj_close
 
@@ -54,22 +56,22 @@ module Stocker
 
     rescue ParseInputs::WrongNumOfArgument
       puts <<~ARGS
-      Wrong number of arguments given
-      Usage: API_KEY=api_key stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
-             OR
-             API_KEY=api_key stocker ASDAPL '2 Jan 2018'
+        Wrong number of arguments given
+        Usage: API_KEY=api_key stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
+               OR
+               API_KEY=api_key stocker ASDAPL '2 Jan 2018'
       ARGS
     rescue ParseInputs::ApiKeyInvalid
       puts <<~API
-      Api key not given
-      Usage: API_KEY=api_key stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
-             OR
-             API_KEY=api_key stocker ASDAPL '2 Jan 2018'
+        Api key not given
+        Usage: API_KEY=api_key stocker ASDAPL '2 Jan 2018' '5 Jan 2018'
+               OR
+               API_KEY=api_key stocker ASDAPL '2 Jan 2018'
       API
     rescue ParseInputs::InvalidDate
       puts <<~DATE
-      Date is invalid format
-      Add date in "1 Jan 2018" format
+        Date is invalid format
+        Add date in '1 Jan 2018' format
       DATE
     end
   end

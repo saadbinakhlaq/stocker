@@ -1,0 +1,11 @@
+AllCops:
+  RubyInterpreters:
+    - ruby
+    - macruby
+    - rake
+    - jruby
+    - rbx
+  Exclude:
+    - 'spec/**/*'
+Documentation:
+  Enabled: false

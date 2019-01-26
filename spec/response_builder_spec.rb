@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe ResponseBuilder do
-  describe '#has_records?' do
+  describe '#records?' do
     context 'when response has data collection' do
       subject do
         ResponseBuilder.new(
           'datatable' => {
             'data' => [{}]
           }
-        ).has_records?
+        ).records?
       end
 
       it { should be_truthy }
@@ -20,7 +22,7 @@ RSpec.describe ResponseBuilder do
           'datatable' => {
             'data' => []
           }
-        ).has_records?
+        ).records?
       end
 
       it { should be_falsey }

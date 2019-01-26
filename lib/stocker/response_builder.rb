@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ResponseBuilder
   attr_reader :api_response
 
@@ -22,12 +24,12 @@ class ResponseBuilder
     @api_response = api_response
   end
 
-  def has_records?
+  def records?
     api_response['datatable']['data'].size > 0
   end
 
   def collection
-    if has_records?
+    if records?
       list_of_data.map do |each_data|
         Response.new(
           each_data[0],
