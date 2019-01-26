@@ -3,12 +3,6 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'stocker/version'
-require 'stocker/parse_inputs'
-require 'stocker/api/quandl'
-require 'stocker/response_builder'
-require 'stocker/operations/rate_of_return'
-require 'stocker/operations/max_drawdown'
-require 'stocker/output_formatter'
 
 Gem::Specification.new do |spec|
   spec.name          = 'stocker'
@@ -34,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 0.63'
+  spec.add_runtime_dependency 'httparty'
 end
