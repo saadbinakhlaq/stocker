@@ -1,5 +1,7 @@
+# frozen_string_literal: true.
+
 #!/usr/bin/env ruby
 
-require "stocker"
+require 'stocker'
 
 Stocker::CLI.start(ARGV)
