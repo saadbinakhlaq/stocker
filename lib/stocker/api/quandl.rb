@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'httparty'
 
 module API
@@ -8,7 +10,7 @@ module API
     class InvalidDate < Error; end
 
     base_uri 'www.quandl.com'
-    PATH = '/api/v3/datatables/WIKI/PRICES.json'.freeze
+    PATH = '/api/v3/datatables/WIKI/PRICES.json'
 
     def initialize(api_key, ticker, from_date, to_date = nil)
       @api_key   = api_key

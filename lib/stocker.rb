@@ -11,6 +11,7 @@ require 'stocker/output_formatter'
 module Stocker
   class Error < StandardError; end
   class CLI
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def self.start(args)
       api_key, ticker, from_date, to_date = ParseInputs.new(
         ENV['API_KEY'],
@@ -32,7 +33,7 @@ module Stocker
 
         rate_of_return = Operations::RateOfReturn.new(
           initial_value: first_open_value,
-          final_value:   last_adj_close_value
+          final_value: last_adj_close_value
         )
         percent    = rate_of_return.rate
         difference = rate_of_return.difference
@@ -53,7 +54,6 @@ module Stocker
       else
         puts "No record found for #{ticker}"
       end
-
     rescue ParseInputs::WrongNumOfArgument
       puts <<~ARGS
         Wrong number of arguments given
@@ -75,4 +75,5 @@ module Stocker
       DATE
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Operations
   class RateOfReturn
     def initialize(initial_value:, final_value:)

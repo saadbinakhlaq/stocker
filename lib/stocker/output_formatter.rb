@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OutputFormatter
   def self.display_stock_prices(values)
     values.each do |value|
@@ -14,12 +16,12 @@ class OutputFormatter
   end
 
   def self.display_price_data(value)
-    puts "#{value.date.strftime("%d.%m.%Y")}: Closed at #{value.close} (#{value.high} ~ #{value.low})"
+    # rubocop:disable Metrics/LineLength
+    puts "#{value.date.strftime('%d.%m.%Y')}: Closed at #{value.close} (#{value.high} ~ #{value.low})"
+    # rubocop:enable Metrics/LineLength
   end
 
-  private
-
   def self.display_percent(percent)
-    percent > 0 ? "+#{percent}" : "#{percent}"
+    percent.positive? ? "+#{percent}" : percent
   end
 end

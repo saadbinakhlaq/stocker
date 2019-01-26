@@ -25,9 +25,10 @@ class ResponseBuilder
   end
 
   def records?
-    api_response['datatable']['data'].size > 0
+    !api_response['datatable']['data'].empty?
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def collection
     if records?
       list_of_data.map do |each_data|
@@ -52,6 +53,7 @@ class ResponseBuilder
       []
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   private
 
